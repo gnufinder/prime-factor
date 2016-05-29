@@ -1,0 +1,7 @@
+
+
+With this program
+
+    q=0;a=1;b=25*10^6;s=a-1;while(s<b,s=nextprime(s+1);if(remainder(s)==0,print(s);q=q+1);if(Mod(s,10^6)==1,print((s-1)/10^6,":",q)));print(q)
+
+you can determine the number of prime factors in the range [a,b] , or to be more precise, in the range [a,nextprime(b)]. Found factors and some checkpoints will be output.
