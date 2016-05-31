@@ -1,4 +1,6 @@
-> w=binary(3^27);gettime();p=1;gef=0;while((gef==0)*(p<10^8),p=nextprime(p+1);if(kronecker(-3,p)==1,if(Mod(p,10^6)==1,print((p-1)/10^6));s=3;for(j=2,length(w),s=s^2;if(w[j]==1,s=s*3);s=component(Mod(s,p),2));s=s+2^16;s=component(Mod(s,p),2);if(s==0,gef=1)));print("Time : ",gettime()/60000*1.0,"  Minutes ");print(p," ",s)
+> w=binary(3^27);gettime();p=1;gef=0;while((gef==0)*(p<10^8),p=nextprime(p+1);if(kronecker(-3,p)==1,if(Mod(p,10^6)==1,
+print((p-1)/10^6));s=3;for(j=2,length(w),s=s^2;if(w[j]==1,s=s*3);s=component(Mod(s,p),2));s=s+2^16;s=component(Mod(s,p),2)
+;if(s==0,gef=1)));print("Time : ",gettime()/60000*1.0,"  Minutes ");print(p," ",s)
 
 is an improved version not needing the function remainder. The p=1 command denotes the start value of the search and the
 command (p<10^8) denotes the end value of the search. The program stops if it either finds a prime-factor or has calculated
