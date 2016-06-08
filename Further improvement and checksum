@@ -1,0 +1,48 @@
+start=1;limit=10^7;check=0;gettime();gef=0;p=start;while((gef==0)*(p<limit),p=nextprime(p+1);while(kronecker(-3,p)<>1,p=nextprime(p+1));if(Mod(p,10^5)==1,print((p-1)/10^6*1.0));s=component(Mod(3^3^3,eulerphi(p)),2);w=binary(s);x=3;for(j=2,length(w),x=x^2;if(w[j]==1,x=x*3);x=component(Mod(x,p),2));x=x+2^16;x=component(Mod(x,p),2);check=check+x);print;print(gettime()/1000*1.0," Seconds ");print("checksum = ",check);print(p,"    ",x)
+
+is the currently my best version. Additionally it returns a checksum. 
+This allows to check, whether a replication came to the same result.
+The program stops if it finds a factor or if the given limit is exceeded. 
+
+The program also outputs the time it needed in seconds.
+If the last output is 0, a factor is found. Otherwise the search was not successful.
+
+An example for a session (Since the last output is not 0, no factor was found)
+
+                  GP/PARI CALCULATOR Version 2.7.3 (released)
+           i686 running mingw (ix86/GMP-5.1.3 kernel) 32-bit version
+                compiled: Feb 10 2015, gcc version 4.6.3 (GCC)
+                            threading engine: single
+               (readline not compiled in, extended help enabled)
+
+                     Copyright (C) 2000-2015 The PARI Group
+
+PARI/GP is free software, covered by the GNU General Public License, and comes
+WITHOUT ANY WARRANTY WHATSOEVER.
+
+Type ? for help, \q to quit.
+Type ?12 for how to get moral (and possibly technical) support.
+
+parisize = 4000000, primelimit = 500000
+? start=1;limit=10^7;check=0;gettime();gef=0;p=start;while((gef==0)*(p<limit),p=
+nextprime(p+1);while(kronecker(-3,p)<>1,p=nextprime(p+1));if(Mod(p,10^5)==1,prin
+t((p-1)/10^6*1.0));s=component(Mod(3^3^3,eulerphi(p)),2);w=binary(s);x=3;for(j=2
+,length(w),x=x^2;if(w[j]==1,x=x*3);x=component(Mod(x,p),2));x=x+2^16;x=component
+(Mod(x,p),2);check=check+x);print;print(gettime()/1000*1.0," Seconds ");print("c
+hecksum = ",check);print(p,"    ",x)
+0.9000000000000000000000000000
+2.100000000000000000000000000
+2.400000000000000000000000000
+3.300000000000000000000000000
+3.600000000000000000000000000
+5.400000000000000000000000000
+6.600000000000000000000000000
+6.900000000000000000000000000
+8.700000000000000000000000000
+9.300000000000000000000000000
+
+9.955000000000000000000000000 Seconds
+checksum = 800969992887
+10000141    7040897
+?
+
