@@ -1,6 +1,6 @@
 start=1;limit=10^7;check=0;gettime();gef=0;p=start;while((gef==0)*(p<limit),p=nextprime(p+1);while(kronecker(-3,p)<>1,p=nextprime(p+1));if(Mod(p,10^5)==1,print((p-1)/10^6*1.0));s=component(Mod(3^3^3,eulerphi(p)),2);w=binary(s);x=3;for(j=2,length(w),x=x^2;if(w[j]==1,x=x*3);x=component(Mod(x,p),2));x=x+2^16;x=component(Mod(x,p),2);check=check+x);print;print(gettime()/1000*1.0," Seconds ");print("checksum = ",check);print(p,"    ",x)
 
-is the currently my best version. Additionally it returns a checksum. 
+is currently my best version. Additionally it returns a checksum. 
 This allows to check, whether a replication came to the same result.
 The program stops if it finds a factor or if the given limit is exceeded. 
 
