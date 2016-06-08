@@ -1,4 +1,8 @@
-start=1;limit=10^7;check=0;gettime();gef=0;p=start;while((gef==0)*(p<limit),p=nextprime(p+1);while(kronecker(-3,p)<>1,p=nextprime(p+1));if(Mod(p,10^5)==1,print((p-1)/10^6*1.0));s=component(Mod(3^3^3,eulerphi(p)),2);w=binary(s);x=3;for(j=2,length(w),x=x^2;if(w[j]==1,x=x*3);x=component(Mod(x,p),2));x=x+2^16;x=component(Mod(x,p),2);check=check+x);print;print(gettime()/1000*1.0," Seconds ");print("checksum = ",check);print(p,"    ",x)
+start=1;limit=10^7;check=0;gettime();gef=0;p=start;while((gef==0)*(p<limit),p=nextprime(p+1);
+while(kronecker(-3,p)<>1,p=nextprime(p+1));if(Mod(p,10^5)==1,print((p-1)/10^6*1.0));
+s=component(Mod(3^3^3,eulerphi(p)),2);w=binary(s);x=3;for(j=2,length(w),x=x^2;if(w[j]==1,x=x*3);
+x=component(Mod(x,p),2));x=x+2^16;x=component(Mod(x,p),2);check=check+x;if(x==0,gef=1));
+print;print(gettime()/1000*1.0," Seconds ");print("checksum = ",check);print(p,"    ",x)
 
 is currently my best version. Additionally it returns a checksum. 
 This allows to check, whether a replication came to the same result.
@@ -28,8 +32,8 @@ parisize = 4000000, primelimit = 500000
 nextprime(p+1);while(kronecker(-3,p)<>1,p=nextprime(p+1));if(Mod(p,10^5)==1,prin
 t((p-1)/10^6*1.0));s=component(Mod(3^3^3,eulerphi(p)),2);w=binary(s);x=3;for(j=2
 ,length(w),x=x^2;if(w[j]==1,x=x*3);x=component(Mod(x,p),2));x=x+2^16;x=component
-(Mod(x,p),2);check=check+x);print;print(gettime()/1000*1.0," Seconds ");print("c
-hecksum = ",check);print(p,"    ",x)
+(Mod(x,p),2);check=check+x;if(x==0,gef=1));print;print(gettime()/1000*1.0," Seco
+nds ");print("checksum = ",check);print(p,"    ",x)
 0.9000000000000000000000000000
 2.100000000000000000000000000
 2.400000000000000000000000000
@@ -41,8 +45,7 @@ hecksum = ",check);print(p,"    ",x)
 8.700000000000000000000000000
 9.300000000000000000000000000
 
-9.955000000000000000000000000 Seconds
+9.911000000000000000000000000 Seconds
 checksum = 800969992887
 10000141    7040897
 ?
-
