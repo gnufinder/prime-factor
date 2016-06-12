@@ -8,7 +8,7 @@
 # or to be more precise in the range [a,nextprime(b)].
 # Found # factors and some checkpoints will be output.
 
-remainder:=function(p);
+remainder:=function(p)
   return (PowerMod(3,3^(3^3),p)+2^16) mod p;
 end;
 
@@ -27,5 +27,5 @@ while s<b do
   fi;
 od;
 
-Print(q);
+Print(q,"\n");
 
