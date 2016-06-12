@@ -13,12 +13,14 @@ remainder:=function(p)
 end;
 
 PrimeFactorsOnInterval:=function(a,b)
-local q,s;
+local q,s,u,v;
 q:=0;
 s:=a-1;
+u:=3^(3^3);
+v:=2^16;
 while s<b do
   s:=NextPrimeInt(s);
-  if remainder(s)=0 then
+  if (PowerMod(3,u,s)+v) mod s = 0 then
     Print(s,"\n");
     q:=q+1;
   fi;
