@@ -12,9 +12,9 @@ remainder:=function(p)
   return (PowerMod(3,3^(3^3),p)+2^16) mod p;
 end;
 
+PrimeFactorsOnInterval:=function(a,b)
+local q,s;
 q:=0;
-a:=1;
-b:=25*10^6;
 s:=a-1;
 while s<b do
   s:=NextPrimeInt(s);
@@ -26,6 +26,14 @@ while s<b do
     Print((s-1)/10^6,":",q,"\n");
   fi;
 od;
+return q;
+end;
 
-Print(q,"\n");
+t1:= Runtime();
+q := PrimeFactorsOnInterval(1,25*10^6);
+t2:= Runtime();
+
+Print( "Number of prime factors found: ", q,"\n");
+Print( "Runtime: " , t2-t1, " ms\n");
+
 
